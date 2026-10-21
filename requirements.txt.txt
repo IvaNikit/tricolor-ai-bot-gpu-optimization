@@ -1,0 +1,8 @@
+text
+torch>=2.1.0
+transformers>=4.35.0
+vllm>=0.2.2
+accelerate>=0.24.0
+optimum>=1.14.0
+autoawq>=0.1.6
+numpy>=1.24.0

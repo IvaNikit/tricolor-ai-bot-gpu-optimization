@@ -1,0 +1,38 @@
+dockerfile
+# Используем легковесный и стабильный образ с поддержкой CUDA 12.1 для инференса нейросетей
+FROM nvidia/cuda:12.1.1-runtime-ubuntu22.04
+
+# Установка системных зависимостей и Python
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update && apt-get install -y \
+    python3-pip \
+    python3-dev \
+    git \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Создание рабочей директории в контейнере
+WORKDIR /app
+
+# Копирование файла зависимостей
+COPY requirements.txt .
+
+# Обновление pip и установка библиотек (vLLM, FastAPI, PyTorch)
+RUN pip3 install --no-cache-dir --upgrade pip && \
+    pip3 install --no-cache-dir -r requirements.txt
+
+# Копирование исходного кода проекта
+COPY . .
+
+# Генерация синтетического датасета при сборке контейнера
+RUN python3 generate_mock_data.py
+
+# Открываем порт 8000 для FastAPI веб-сервера
+EXPOSE 8000
+
+# Переменные окружения для корректной работы GPU в Docker
+ENV NVIDIA_VISIBLE_DEVICES=all
+ENV NVIDIA_DRIVER_CAPABILITIES=compute,utility
+
+# Команда для автоматического запуска API-сервиса чат-бота
+CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]

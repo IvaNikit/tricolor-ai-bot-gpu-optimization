@@ -1,0 +1,29 @@
+{
+  "company_name": "NAO NSK Tricolor (AI Assistant)",
+  "industry": "Multi-platform Operator",
+  "error_codes": [ "ERR-0", "ERR-5", "ERR-11", "ERR-13" ],
+  "products_or_services": [ "Unified Ultra", "Kids Pack", "Match Premier", "Ultra HD" ],
+  "keywords_responses": [
+    {
+      "keywords": [ "error", "broken", "bug", "crash", "receiver" ],
+      "bot_answer": "Receiver issue detected. Please unplug the device from the power outlet for 10 seconds. If the error persists, we will send an activation command to your ID."
+    },
+    {
+      "keywords": [ "payment", "buy", "price", "tariff", "cost", "subscription" ],
+      "bot_answer": "To pay for services, go to the 'Payment' section on tricolor.ru or use the Fast Payment System (SBP) in your Account."
+    },
+    {
+      "keywords": [ "hello", "hi", "greetings", "start" ],
+      "bot_answer": "Hello! I am your virtual AI helper from Tricolor. How can I assist you today?"
+    },
+    {
+      "keywords": [ "id", "number", "where is id", "find id" ],
+      "bot_answer": "You can find your equipment ID on the receiver remote control by pressing the 'Tricolor TV' or 'No. ID' button."
+    },
+    {
+      "keywords": [ "tv", "app", "smart", "freeze" ],
+      "bot_answer": "If the app freezes on Smart TV, we recommend clearing the application cache in the TV settings or restarting your router."
+    }
+  ],
+  "default_response": "Thank you for contacting Tricolor support! Your request has been forwarded to the AI assistant for detailed analysis. Please wait."
+}
